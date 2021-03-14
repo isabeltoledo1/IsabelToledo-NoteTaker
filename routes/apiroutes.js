@@ -36,26 +36,28 @@ router.post("/api/notes", function (req, res) {
 //notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 
 
-router.delete("/api/notes/:id", function (req, res) {
-  // ':id' is a parameter in the express route
-  const id = req.params.id;
-  console.log(id);
-  //fs.readFile("./db/db.json")
-  const db = require ("../db/db.json")
-  let arr = new Array
-  for ( var i = 0; i <= db.length-1; i++){
-    console.log(db[i].id === id);
-    if (db[i].id !== id){
-      arr.push(db[i])
-    }
-  }
-  console.log(arr)
-  // use a filter or a for loop to remove from the notes array
-  fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(arr, null, 2), (err) => {
-    if (err) throw err
-});
-  return res.json(arr);
-});
+// router.delete("/api/notes/:id", function (req, res) {
+//   // ':id' is a parameter in the express route
+//   const id = req.params.id;
+//   console.log(id);
+//   fs.readFile("./db/db.json")
+//   const db = require ("../db/db.json")
+//   let arr = new Array
+//   for ( var i = 0; i <= db.length-1; i++){
+//     console.log(db[i].id === id);
+//     if (db[i].id !== id){
+//       arr.push(db[i])
+//     }
+//  }
+//   console.log(arr)
+
+//   fs.writeFile(path.join(__dirname, "../db/db.json"), JSON.stringify(arr, null, 2), (err) => {
+//    if (err) throw err
+// });
+//   return res.json(arr);
+// });
+
+
 
 
 module.exports = router;
